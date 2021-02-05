@@ -6,9 +6,17 @@ buttonElement.addEventListener("click", () => {
   const num1 = num1Element.value;
   const num2 = num2Element.value;
   const result = add(+num1, +num2);
+  const result2 = add('test','test2');
   console.log(result);
+  console.log(result2);
 });
 
-function add(number1: number, number2: number) {
-  return number1 + number2;
-}
+const add = (number1: number | string, number2: number | string) => {
+  if (typeof number1 === "number" && typeof number2 === "number") {
+    return number1 + number2;
+  } else if (typeof number1 === 'string' && typeof number2 === 'string') {
+    return number1 + "  " + number2;
+  } else {
+    return +number1 + +number2;
+  }
+};
