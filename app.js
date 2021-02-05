@@ -17,9 +17,9 @@ buttonElement.addEventListener("click", function () {
     console.log(numArray);
     console.log(stringArray);
 });
-function printObject(object) {
-    console.log(object.val, object.date);
-}
+var printObject = function (obj) {
+    console.log(obj.val, obj.date);
+};
 var add = function (number1, number2) {
     if (typeof number1 === "number" && typeof number2 === "number") {
         return number1 + number2;

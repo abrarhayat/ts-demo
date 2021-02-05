@@ -4,6 +4,12 @@ const buttonElement = document.querySelector("button")!; //! assumes that we are
 
 const numArray: number[] = [];
 const stringArray: string[] = [];
+type NumOrString = number | string;
+type Result = { val: number; date: Date }; //same as the interface except interfaces can be used to make objects implement functionalities
+interface ResultObj {
+  val: number;
+  date: Date;
+}
 
 buttonElement.addEventListener("click", () => {
   const num1 = num1Element.value;
@@ -19,11 +25,11 @@ buttonElement.addEventListener("click", () => {
   console.log(stringArray);
 });
 
-function printObject(obj: { val: number; date: Date }) {
+const printObject = (obj: ResultObj) => {
   console.log(obj.val, obj.date);
-}
+};
 
-const add = (number1: number | string, number2: number | string) => {
+const add = (number1: NumOrString, number2: NumOrString) => {
   if (typeof number1 === "number" && typeof number2 === "number") {
     return number1 + number2;
   } else if (typeof number1 === "string" && typeof number2 === "string") {
