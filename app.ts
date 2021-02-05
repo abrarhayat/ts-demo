@@ -2,7 +2,7 @@ const num1Element = document.getElementById("num1") as HTMLInputElement; //type 
 const num2Element = document.getElementById("num2") as HTMLInputElement;
 const buttonElement = document.querySelector("button")!; //! assumes that we are certain it is not null
 
-const numArray: number[] = [];
+const numArray: Array<number> = []; //alt syntax to number[]
 const stringArray: string[] = [];
 type NumOrString = number | string;
 type Result = { val: number; date: Date }; //same as the interface except interfaces can be used to make objects implement functionalities
@@ -38,3 +38,23 @@ const add = (number1: NumOrString, number2: NumOrString) => {
     return +number1 + +number2;
   }
 };
+
+//specifying the type to which the promise will resolve to
+const promise = new Promise<string>((resolve, reject) => {
+  const worked = true;
+  if (worked) {
+    setTimeout(() => {
+      resolve("Test Result - Worked!");
+    }, 1000);
+  } else {
+    reject(new Error("Test Result - Failed!"));
+  }
+});
+
+promise
+  .then((result) => {
+    console.log(result.split(" "));
+  })
+  .catch((err) => {
+    console.log(err);
+  });
